@@ -1,0 +1,39 @@
+{% extends "quotes/base.html" %}
+
+{% block content %}
+
+<form method="POST" action="{% url 'quotes:add_author' %}" style="max-width: 600px; margin: 0 auto;">
+    {% csrf_token %}
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="display: flex; flex-direction: column;">
+            <label>Author fullname:</label>
+            {{ form.fullname }}
+            <span style="color: red;">{{ form.errors.fullname }}</span>
+        </div>
+        
+        <div style="display: flex; flex-direction: column;">
+            <label>Born date:</label>
+            {{ form.born_date }}
+            <span style="color: red;">{{ form.errors.born_date }}</span>
+        </div>
+        
+        <div style="display: flex; flex-direction: column;">
+            <label>Born location:</label>
+            {{ form.born_location }}
+            <span style="color: red;">{{ form.errors.born_location }}</span>
+        </div>
+        
+        <div style="display: flex; flex-direction: column;">
+            <label>Description:</label>
+            {{ form.description }}
+            <span style="color: red;">{{ form.errors.description }}</span>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <button type="submit" style="flex-basis: 48%;">Submit</button>
+        <button type="reset" class="secondary" style="flex-basis: 48%;">Reset</button>
+    </div>
+</form>
+
+{% endblock %}
